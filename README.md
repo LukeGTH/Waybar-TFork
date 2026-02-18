@@ -51,7 +51,7 @@ $ git clone https://github.com/LukeGTH/Waybar-TFork
 $ cd Waybar-TFork
 $ meson setup build --prefix=$HOME/.local -Dlibinput=disabled -Dlibudev=disabled -Dsystemd=disabled -Dlogind=disabled -Dtests=disabled
 $ ninja -C build
-$ ./build/waybar
+$ dbus-run-session ./waybar -c $HOME/.config/waybar/config -s $HOME/.config/waybar/style.css
 # If you want to install it
 $ ninja -C build install
 $ waybar
@@ -86,7 +86,7 @@ upower [UPower battery module]
 ```
 cmake
 meson
-scdoc
+scdoc (optional)
 wayland-protocols
 ```
 
