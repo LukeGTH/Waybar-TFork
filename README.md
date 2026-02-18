@@ -49,7 +49,7 @@ An Ubuntu PPA with more recent versions is available
 ```bash
 $ git clone https://github.com/LukeGTH/Waybar-TFork
 $ cd Waybar-TFork
-$ meson setup build
+$ meson setup build --prefix=$HOME/.local -Dlibinput=disabled -Dlibudev=disabled -Dsystemd=disabled -Dlogind=disabled -Dtests=disabled
 $ ninja -C build
 $ ./build/waybar
 # If you want to install it
