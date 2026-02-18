@@ -47,8 +47,8 @@ An Ubuntu PPA with more recent versions is available
 #### Building from source
 
 ```bash
-$ git clone https://github.com/Alexays/Waybar
-$ cd Waybar
+$ git clone https://github.com/LukeGTH/Waybar-TFork
+$ cd Waybar-TFork
 $ meson setup build
 $ ninja -C build
 $ ./build/waybar
