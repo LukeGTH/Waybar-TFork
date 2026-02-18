@@ -9,7 +9,12 @@
 #include "prepare_for_sleep.h"
 
 namespace waybar::util {
-
+#ifdef __ANDROID__
+#include <pthread.h>
+#define PTHREAD_CANCEL_DISABLE 0
+#define pthread_setcancelstate(state, oldstate) 0
+#define pthread_cancel(t) 0
+#endif
 /**
  * Defer pthread_cancel until the end of a current scope.
  *

@@ -27,40 +27,17 @@ const char* Config::CONFIG_PATH_ENV = "WAYBAR_CONFIG_DIR";
 
 std::vector<std::string> Config::tryExpandPath(const std::string& base,
                                                const std::string& filename) {
+  std::vector<std::string> results;
   fs::path path;
 
   if (!filename.empty()) {
-    path = fs::path(base) / fs::path(filename);
+    path = fs::path(base) / filename;
   } else {
     path = fs::path(base);
   }
 
-  spdlog::debug("Try expanding: {}", path.string());
-
-  std::vector<std::string> results;
-#ifndef __OpenBSD__
-  wordexp_t p;
-  if (wordexp(path.c_str(), &p, 0) == 0) {
-    for (size_t i = 0; i < p.we_wordc; i++) {
-      if (access(p.we_wordv[i], F_OK) == 0) {
-        results.emplace_back(p.we_wordv[i]);
-        spdlog::debug("Found config file: {}", p.we_wordv[i]);
-      }
-    }
-    wordfree(&p);
-  }
-#else
-  glob_t p;
-  if (glob(path.c_str(), 0, NULL, &p) == 0) {
-    for (size_t i = 0; i < p.gl_pathc; i++) {
-      if (access(p.gl_pathv[i], F_OK) == 0) {
-        results.emplace_back(p.gl_pathv[i]);
-        spdlog::debug("Found config file: {}", p.gl_pathv[i]);
-      }
-    }
-    globfree(&p);
-  }
-#endif
+  // Apenas adicionamos o caminho sem tentar expandir com wordexp
+  results.push_back(path.string());
 
   return results;
 }

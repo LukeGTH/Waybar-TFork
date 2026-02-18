@@ -47,13 +47,13 @@
 #include "modules/wayfire/workspaces.hpp"
 #endif
 #if defined(__FreeBSD__) || defined(__linux__)
-#include "modules/battery.hpp"
+// #include "modules/battery.hpp"
 #endif
 #if defined(HAVE_CPU_LINUX) || defined(HAVE_CPU_BSD)
 #include "modules/cpu.hpp"
 #include "modules/cpu_frequency.hpp"
 #include "modules/cpu_usage.hpp"
-#include "modules/load.hpp"
+// #include "modules/load.hpp"
 #endif
 #include "modules/idle_inhibitor.hpp"
 #if defined(HAVE_MEMORY_LINUX) || defined(HAVE_MEMORY_BSD)
@@ -130,9 +130,9 @@ waybar::AModule* waybar::Factory::makeModule(const std::string& name,
     auto ref = name.substr(0, hash_pos);
     auto id = hash_pos != std::string::npos ? name.substr(hash_pos + 1) : "";
 #if defined(__FreeBSD__) || defined(__linux__)
-    if (ref == "battery") {
-      return new waybar::modules::Battery(id, bar_, config_[name]);
-    }
+    // if (ref == "battery") {
+      // return new waybar::modules::Battery(id, bar_, config_[name]);
+    // }
 #endif
 #ifdef HAVE_GAMEMODE
     if (ref == "gamemode") {
@@ -259,9 +259,9 @@ waybar::AModule* waybar::Factory::makeModule(const std::string& name,
     if (ref == "cpu_usage") {
       return new waybar::modules::CpuUsage(id, config_[name]);
     }
-    if (ref == "load") {
-      return new waybar::modules::Load(id, config_[name]);
-    }
+    // if (ref == "load") {
+      // return new waybar::modules::Load(id, config_[name]);
+    // }
 #endif
     if (ref == "clock") {
       return new waybar::modules::Clock(id, config_[name]);
