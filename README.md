@@ -54,7 +54,6 @@ $ ninja -C build
 $ dbus-run-session ./waybar -c $HOME/.config/waybar/config -s $HOME/.config/waybar/style.css
 # If you want to install it
 $ ninja -C build install
-$ waybar
 ```
 
 **Dependencies**
