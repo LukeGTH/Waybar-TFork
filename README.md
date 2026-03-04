@@ -57,8 +57,9 @@ $ ninja -C build install
 ```
 My Waybar config is in waybar/
 in this folder have
-```config.jsonc
-   style.css
+```
+config.jsonc
+style.css
 ```
 
 **Dependencies**
