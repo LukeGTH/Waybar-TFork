@@ -1,6 +1,6 @@
 @define-color accent #afa193;
 @define-color fg #f6f1ea;
-@define-color bg #101010;
+@define-color bg rgba(16, 16, 16, 0.6);
 @define-color bg-alt #252525;
 
 * {
