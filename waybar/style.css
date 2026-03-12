@@ -1,60 +1,135 @@
-@define-color accent #afa193;
-@define-color fg #f6f1ea;
-@define-color bg rgba(16, 16, 16, 0.6);
-@define-color bg-alt #252525;
+
+@define-color background transparent;
+
 
 * {
-    font-size: 21px;
-    min-height: 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: JetBrains Mono Nerd Font;
+    color: @color1;
 }
 
 window#waybar {
-    background-color: @bg;
-    border-bottom: 1px solid @bg-alt;
+    all: unset;
+    background-color: @background;
+    color: @color1;
 }
 
-#mode {
-    font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
-    color: @accent;
+.modules-left,
+.modules-center,
+.modules-right {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: none;
+    padding: 10px;
 }
 
-#language,
-#pulseaudio,
-#battery,
-#backlight,
-#custom-clock {
-    font-family: "JetBrainsMono Nerd Font";
-    color: @fg;
+.modules-center {
+    min-width: 150.5px;
+}
+
+tooltip {
+    color: @color7;
+    background-color: @color1;
+}
+
+#custom-foot:hover,
+#custom-control:hover,
+#custom-gimp:hover,
+#custom-thunar:hover,
+#custom-code:hover,
+#custom-firefox:hover,
+#custom-clock:hover,
+#bluetooth:hover,
+#network:hover,
+#custom-cpu:hover,
+#custom-memory:hover,
+#custom-gpu:hover,
+#custom-colorpicker:hover,
+#custom-power:hover,
+#pulseaudio:hover {
+    transition: all 0.3s ease;
+    color: @color7;
 }
 
 #workspaces {
-    font-family: "JetBrainsMono Nerd Font";
-    border-bottom: 1px solid @bg-alt;
+    padding: 0px 5px;
 }
 
 #workspaces button {
-    padding: 7px 12px 7px 12px;
-    color: @fg;
-    background-color: @bg;
-    border: none;
+    all: unset;
+    margin: 0px 6px;
+    padding: 0px 4px;
+    background: @color7;
+    border-radius: 50%;
+    transition: all 0.3s;
+    min-width: 15px;
 }
 
 #workspaces button:hover {
-    background: none;
+    background: @color1;
+}
+
+#workspaces button.active {
     border: none;
-    border-color: transparent;
-    transition: none;
+    border-radius: 10px;
+    background: @color1;
+    min-width: 30px;
 }
 
-#workspaces button.focused {
-    border-radius: 0;
-    color: @accent;
+#workspaces button:hover label,
+#workspaces button.active label {
+    color: @color7;
+}
+
+#group-expand {
+    padding: 0px 5px;
+    transition: all 0.3s ease;
+}
+
+#battery {
+    color: @color7;
+    padding: 0 10px;
     font-weight: bold;
+    transition: all 0.3s ease-in-out;
 }
 
-#tray {
-    font-family: "Ubuntu";
-    padding-right: 5px;
-    padding-left: 10px;
+#battery:hover {
+    color: @color7;
+}
+
+#custom-expand {
+    padding: 0px 5px;
+    color: @color7;
+    transition: all 0.3s ease;
+}
+
+#custom-expand:hover {
+    color: @color7;
+}
+
+#custom-colorpicker,
+#custom-cpu,
+#custom-memory,
+#custom-gpu,
+#pulseaudio,
+#bluetooth,
+#network,
+#custom-power,
+#custom-clock,
+#custom-foot,
+#custom-control,
+#custom-gimp,
+#custom-thunar,
+#custom-code,
+#custom-firefox {
+    padding: 0px 5px;
+    color: @color7;
+    transition: all 0.3s ease;
+}
+
+#custom-endpoint {
+    color: transparent;
 }

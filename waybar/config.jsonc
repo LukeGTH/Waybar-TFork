@@ -1,60 +1,73 @@
+
 {
-  "layer": "bottom",
-  "position": "bottom",
-  "height": 30,
-  "spacing": 0,
-  "modules-left": [
-    "sway/workspaces",
-    "sway/mode"
-  ],
-  "modules-center": [
-    "custom/clock"
-  ],
-  "modules-right": [
-    "sway/language",
-    "pulseaudio",
-    "battery",
-    "backlight",
-    "tray"
-  ],
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "format": "{icon}{name}",
-    "format-icons": {
-      "default": " ",
-      "urgent": "!",
-      "focused": "*"
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+    "modules-left": ["custom/clock"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["pulseaudio" , "custom/control" , "custom/thunar" , "custom/code" , "custom/firefox","network","custom/battery","custom/power"],
+
+    "custom/battery": {
+      "format": "{}% ",
+      "tooltip": true,
+      "interval": 30,
+       "exec": "termux-battery-status | jq '.percentage'"
+    },
+
+    "sway/workspaces": {
+        "persistent-workspaces": {
+            "*": [ 1,2,3,4,5 ]
+        }
+    },
+
+    "custom/foot":{
+        "format":"",
+        "on-click":"foot"
+    },
+
+    "custom/control":{
+        "format":"  ",
+        "on-click":"better-control"
+    },
+    "custom/thunar":{
+        "format":"  ",
+        "on-click":"dolphin"
+    },
+    "custom/code":{
+        "format":"   ",
+        "on-click":"code"
+    },
+    "custom/firefox":{
+        "format":"   ┃",
+        "on-click":"firefox"
+    },
+
+
+    "pulseaudio":{
+        "format":"  {volume}%",
+        "tooltip":false
+    },
+
+    "custom/power": {
+        "format": " ",
+        "on-click":"shutdown -h now"
+    },
+
+    "custom/clock": {
+        "format": " {}",
+        "exec": "date +'%I:%M:%S %p'",
+        "interval": 1,
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": " ",
+        "on-click": "control --minimal --wifi",
+        "tooltip":false
+    },
+
+    "custom/expand": {
+        "format": "",
+        "tooltip": false
     }
-  },
-  "sway/mode": {
-    "format": "  {}"
-  },
-  "custom/clock": {
-    "format": "<span color='#252525'>[ </span>{text}<span color='#252525'> ]</span>",
-    "exec": "date +'%H:%M %A, %b %d' | awk '{print tolower($0)}'",
-    "interval": 3
-  },
-  "sway/language": {
-    "format": "<span color='#252525'>[ </span><span color='#afa193'><b>key: </b></span>{short}<span color='#252525'> / </span>",
-    "tooltip": false
-  },
-  "pulseaudio": {
-    "format": "<span color='#afa193'><b>vol:</b></span> {volume}%",
-    "format-muted": "<span color='#afa193'><b>vol:</b></span> {volume}% (m)"
-  },
-  "battery": {
-    "format": "<span color='#252525'> / </span><span color='#afa193'><b>bat:</b></span> {capacity}%",
-    "format-charging": "<span color='#252525'> / </span><span color='#afa193'><b>ac:</b></span> {capacity}%",
-    "tooltip": false,
-    "interval": 20
-  },
-  "backlight": {
-    "format": "<span color='#252525'> / </span><span color='#afa193'><b>mon:</b></span> {percent}%<span color='#252525'> ]</span>",
-    "tooltip": false
-  },
-  "tray": {
-    "icon-size": 20,
-    "spacing": 7,
-    "tooltip": false
-  }
 }
