@@ -55,7 +55,7 @@ $ dbus-run-session ./waybar -c $HOME/.config/waybar/config.jsonc -s $HOME/.confi
 # If you want to install it
 $ ninja -C build install
 ```
-My Waybar config is in waybar/
+Configs in waybar/
 in this folder have
 ```
 config.jsonc
